@@ -9,7 +9,7 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "deploy": "gh-pages -d web-build",
-    "predeploy": "expo publish"
+    "predeploy": "expo export:web"
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^6.2.0",
