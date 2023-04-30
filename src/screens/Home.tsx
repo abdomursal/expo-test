@@ -69,8 +69,6 @@ const style = StyleSheet.create({
     alignItems: "center",
     backgroundColor: Colors.primary,
     paddingVertical: 20,
-    overflow: "hidden",
-    overflowY: "hidden",
   },
   title: {
     fontSize: 34,
