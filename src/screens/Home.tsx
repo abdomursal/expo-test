@@ -1,12 +1,6 @@
 import { DrawerScreenProps } from "@react-navigation/drawer";
-import React, {useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  SafeAreaView,
-  StatusBar,
-} from "react-native";
+import React, { useState } from "react";
+import { View, Text, StyleSheet, SafeAreaView, StatusBar } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import Card from "../components/Card";
 import CategorySlider from "../components/CategorySlider";
@@ -18,12 +12,13 @@ import { data } from "../lib/data";
 import { DrawerParamList } from "../types/NavigationProps";
 import { viewportWidth } from "../utils/ScaleDimensions";
 
-
-const Home = ({ navigation,route }: DrawerScreenProps<DrawerParamList, any>) => {
-  const [categorySelected, setCategorySelected] = useState('');
-  const filter = data.filter((item)=> item.category == categorySelected)
-  const products = filter.length <= 0? data : filter
-
+const Home = ({
+  navigation,
+  route,
+}: DrawerScreenProps<DrawerParamList, any>) => {
+  const [categorySelected, setCategorySelected] = useState("");
+  const filter = data.filter((item) => item.category == categorySelected);
+  const products = filter.length <= 0 ? data : filter;
 
   return (
     <SafeAreaView style={style.container}>
@@ -40,7 +35,13 @@ const Home = ({ navigation,route }: DrawerScreenProps<DrawerParamList, any>) => 
           // keyExtractor={(item}) =>item.id}
           horizontal
           showsHorizontalScrollIndicator={true}
-          renderItem={({ item }) => <CategorySlider data={item} onPress={()=>setCategorySelected(item.label)}  selected={categorySelected}/>}
+          renderItem={({ item }) => (
+            <CategorySlider
+              data={item}
+              onPress={() => setCategorySelected(item.label)}
+              selected={categorySelected}
+            />
+          )}
           contentContainerStyle={style.paddingLeft}
         />
       </View>
@@ -51,21 +52,25 @@ const Home = ({ navigation,route }: DrawerScreenProps<DrawerParamList, any>) => 
           horizontal
           showsHorizontalScrollIndicator={false}
           renderItem={({ item }) => <Card data={item} />}
-          contentContainerStyle={[style.scrollViewContentStyle, style.paddingLeft]}
+          contentContainerStyle={[
+            style.scrollViewContentStyle,
+            style.paddingLeft,
+          ]}
         />
       </View>
     </SafeAreaView>
   );
 };
 
-
 const style = StyleSheet.create({
   container: {
-    flex:1,
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: Colors.primary,
     paddingVertical: 20,
+    overflow: "hidden",
+    overflowY: "hidden",
   },
   title: {
     fontSize: 34,
@@ -86,12 +91,12 @@ const style = StyleSheet.create({
   },
   scrollViewContentStyle: {
     alignItems: "center",
-    justifyContent:'center'
+    justifyContent: "center",
   },
   cardWrap: {
     width: "100%",
-    height: '55%',
-  }
+    height: "55%",
+  },
 });
 
 export default Home;
